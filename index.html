@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>03:17</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- BACKGROUND LAYERS -->
+  <div id="bg-a" class="bg-layer"></div>
+  <div id="bg-b" class="bg-layer"></div>
+  <canvas id="dream-vortex" aria-hidden="true"></canvas>
+
+  <!-- DARK OVERLAY -->
+  <div id="scene-overlay"></div>
+  <div id="killer-darkness" aria-hidden="true"></div>
+  <div id="killer-door-glow" aria-hidden="true"></div>
+  <img id="killer-doorway-figure" src="Images/man-sprite.png" alt="" aria-hidden="true">
+  <div id="revenge-darkness" aria-hidden="true"></div>
+  <div id="dream-darkness" aria-hidden="true"></div>
+
+  <!-- FLASH EFFECT -->
+  <div id="flash-overlay"></div>
+
+  <!-- Opening: eyes adjusting to the darkness -->
+  <div id="wake-overlay" aria-hidden="true"></div>
+  <div id="man-jump-layer" aria-hidden="true"><img src="Images/man-sprite.png" alt=""></div>
+
+
+  <!-- =====================================
+       GAME LOGO
+  ====================================== -->
+
+  <div id="logo">
+    03:17
+  </div>
+
+
+  <!-- =====================================
+       GAME
+  ====================================== -->
+
+  <main id="game">
+
+    <div id="scene-content">
+
+      <div id="story"></div>
+
+      <div id="choices"></div>
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================
+       START SCREEN
+  ====================================== -->
+
+  <div id="start-screen">
+
+    <div
+      id="start-title"
+      aria-label="03:17"
+    >
+
+      <span>0</span>
+      <span>3</span>
+
+      <span class="start-colon">
+        :
+      </span>
+
+      <span>1</span>
+
+      <!-- LAST DIGIT -->
+      <span class="digit-window">
+
+        <span class="digit-reel">
+
+          <span class="digit">
+            7
+          </span>
+
+          <span class="digit">
+            8
+          </span>
+
+        </span>
+
+      </span>
+
+    </div>
+
+
+    <div id="clock-error">
+      TIME ERROR
+    </div>
+
+
+    <button id="enter-button">
+      ENTER
+    </button>
+
+  </div>
+
+
+  <script src="dream-vortex.js"></script>
+  <script src="sketch.js"></script>
+
+</body>
+
+</html>
