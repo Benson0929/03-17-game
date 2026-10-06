@@ -1193,18 +1193,19 @@ function setScene(
 
         activeText =
           cleanText(
-            storyText
+            localizeStory(storyText)
           );
 
 
         activeButtons =
-          buttons;
+          localizeButtons(buttons);
 
 
         activeIndex =
           0;
 
 
+        sceneContent.scrollTop = 0;
         story.textContent =
           "";
 
@@ -1273,11 +1274,11 @@ function setScene(
 
 function renderStoryText(text) {
   const story = document.getElementById("story");
-  story.classList.toggle("memory-fragments", activeText.startsWith("You stare at the scar."));
-  const isRememberEnding = activeText.startsWith("The final memory returns.");
+  story.classList.toggle("memory-fragments", activeText.startsWith(translateLine("You stare at the scar.")));
+  const isRememberEnding = activeText.startsWith(translateLine("The final memory returns."));
   story.classList.toggle("remember-ending-text", isRememberEnding);
   if (isRememberEnding) {
-    const lead = "The voice on the phone was yours.\n";
+    const lead = translateLine("The voice on the phone was yours.") + "\n";
     const leadIndex = text.indexOf(lead);
     if (leadIndex >= 0) {
       const split = leadIndex + lead.length;
@@ -1290,8 +1291,8 @@ function renderStoryText(text) {
     }
     return;
   }
-  if (activeText.startsWith("You enter the kitchen.")) {
-    const noteStart = text.indexOf("IF");
+  if (activeText.startsWith(translateLine("You enter the kitchen."))) {
+    const noteStart = text.indexOf(gameLanguage === "zh-Hant" ? "如果" : "IF");
     if (noteStart >= 0) {
       const note = document.createElement("span");
       note.className = "story-note";
@@ -1302,9 +1303,9 @@ function renderStoryText(text) {
     }
     return;
   }
-  const isApartment = activeText.startsWith("You finally take a closer look around the apartment.");
-  const isMirror = activeText.startsWith("You look into the mirror.");
-  const isLoop = activeText.startsWith("You check the clock again.");
+  const isApartment = activeText.startsWith(translateLine("You finally take a closer look around the apartment."));
+  const isMirror = activeText.startsWith(translateLine("You look into the mirror."));
+  const isLoop = activeText.startsWith(translateLine("You check the clock again."));
   if (!isApartment && !isMirror && !isLoop) {
     story.textContent = text;
     return;
@@ -1315,10 +1316,10 @@ function renderStoryText(text) {
   lines.forEach(function (line, index) {
     const previous = lines[index - 1];
     const followsClock = isApartment
-      ? previous === "The clock reads:"
+      ? previous === translateLine("The clock reads:")
       : isLoop
-        ? previous === "You check the clock again."
-        : previous === "You check the clock." || previous === "Your phone:";
+        ? previous === translateLine("You check the clock again.")
+        : previous === translateLine("You check the clock.") || previous === translateLine("Your phone:");
     if (followsClock && line && clockLabel.startsWith(line)) {
       const clock = document.createElement("span");
       clock.className = "story-clock-large";
@@ -1653,13 +1654,13 @@ function typeNextCharacter(
   // ==========================================
 
   let speed =
-    28;
+    gameLanguage === "zh-Hant" ? 65 : 28;
 
 
   if (
     character === "." ||
     character === "?" ||
-    character === "!"
+    character === "!" || "。？！…".includes(character)
   ) {
 
     speed =
@@ -1669,7 +1670,7 @@ function typeNextCharacter(
 
   else if (
     character === "," ||
-    character === ";"
+    character === ";" || "，；：".includes(character)
   ) {
 
     speed =
