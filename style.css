@@ -1534,37 +1534,8 @@ body.memory-montage .bg-layer.active {
 #enter-button:hover::after { background: #190000; }
 #enter-button:focus-visible { outline: 2px solid #df1010; outline-offset: 5px; }
 
-/* Bilingual title controls and Traditional Chinese reading layout. */
-#language-picker { display: flex; gap: 12px; margin: 0 20px 24px; }
-#language-picker button {
-  width: auto;
-  min-height: 40px;
-  padding: 8px 10px;
-  font-size: 13px;
-  font-weight: 400;
-  border: 0;
-  background: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-#language-picker button:hover {
-  background: transparent;
-  color: #ed2929;
-  box-shadow: none;
-  transform: none;
-}
-#language-picker button[aria-pressed="true"] { font-weight: 700; color: #ed2929; }
-#language-picker button:focus-visible { outline: 2px solid #ed2929; outline-offset: 4px; }
-#language-picker button:lang(zh-Hant),
-html[lang="zh-Hant"] #story,
-html[lang="zh-Hant"] button { font-family: "Noto Serif TC", serif; font-weight: 500; }
-html[lang="zh-Hant"] #story { line-height: 1.65; letter-spacing: 0.06em; }
-html[lang="zh-Hant"] #story.memory-fragments { line-height: 1.85; }
-html[lang="zh-Hant"] #story.remember-ending-text { line-height: 1.75; }
-html[lang="zh-Hant"] #story .story-note { line-height: 1.8; }
 /* Allow long scenes to remain readable on short or mobile screens. */
 #scene-content { max-height: calc(100dvh - 130px); overflow-y: auto; scrollbar-width: thin; }
 @media (max-width: 700px) {
-  html[lang="zh-Hant"] #story { font-size: 17px; line-height: 1.6; }
   #scene-content { max-height: calc(100dvh - 105px); }
 }
